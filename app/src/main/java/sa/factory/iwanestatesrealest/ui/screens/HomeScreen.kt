@@ -27,6 +27,8 @@ fun HomeScreen(
     onItemClick: (IwanEstatesItem) -> Unit
 ) {
     val categories = listOf("الكل", "الخدمات الرئيسية", "المراقبة الحية", "التقارير الضريبية", "الإعدادات")
+    val defaultPeripheral = "360 LiDAR Spatial Scanner + Matterport Pro3"
+    val activePeripheralName = state.telemetry?.peripheralName ?: defaultPeripheral
 
     Column(
         modifier = Modifier
@@ -36,7 +38,7 @@ fun HomeScreen(
     ) {
         // Header
         Column {
-            Text("تطبيق إيوان العقارية — مطلوب مدير تسويق محترف لإدار", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
+            Text("تطبيق إيوان العقارية - منصة المسح المكاني والعقارات الفاخرة", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
             Text("منظومة real_estate المتكاملة مع ربط 360 LiDAR Spatial Scanner + Matterport Pro3", fontSize = 12.sp, color = BrandTextSecondary)
         }
 
@@ -52,7 +54,7 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("العتاد الحي: ${state.telemetry?.peripheralName ?: '360 LiDAR Spatial Scanner + Matterport Pro3'}", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
+                    Text("العتاد الحي: $activePeripheralName", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
                     Text(state.telemetry?.liveReading ?: "360 LiDAR Spatial Scanner + Matterport Pro3: ONLINE | READY", fontSize = 11.sp, color = BrandTextSecondary)
                 }
                 Badge(containerColor = BrandPrimary) {
